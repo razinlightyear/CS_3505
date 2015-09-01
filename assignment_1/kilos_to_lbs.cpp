@@ -9,8 +9,8 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-	cout << argc << endl;
-	cout << argv[0] << endl;
+	//cout << argc << endl;
+	//cout << argv[0] << endl;
 	// Only print 2 decimal places past the decimal.
 	// Assume that there is one valid argument.
 	float lbs = atof(argv[1])*2.20462262;

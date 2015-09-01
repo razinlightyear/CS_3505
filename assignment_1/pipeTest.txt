@@ -1,1 +1,5 @@
 grep '^*\d' values.txt | ./a.out
+
+for line in $(cat values.txt); do ./a.out $line; done;
+
+cat values.txt | xargs -n 1 ./a.out
