@@ -1,0 +1,5 @@
+CS 3505 - assignment 1 - Andrew Emrazian
+
+cat values.txt | xargs -n 1 ./a.out
+
+for line in $(cat values.txt); do ./a.out $line; done;
