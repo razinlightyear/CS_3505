@@ -1,0 +1,32 @@
+project folder 'A2'
+
+	1) HaruPDF.h 
+		- provide the interface for the HaruPDF.cpp
+		
+	2) HaruPDF.cpp 
+		- #include "HaruPDF.h"
+		- break up 
+		- call Haru functions
+
+	3) Spiral.h
+		
+	4) Spiral.cpp
+		- no Haru functionality
+		- 1 construtor
+		- overload the ++ operator
+		- getters for x,y,spiral angle, and text amgle
+		
+	5) spiralPDF.cpp
+		- use the test file as a template for this file.
+		- the text comes from the command line
+		- Should generate a PDF called spiralPDF.pdf
+
+	MakeFile
+
+	Generate an output PDF and put in the folder
+	
+	
+zip folder when done	
+
+compile ./A2/pdfExample.cpp:
+g++ -o pdfExample -O3 pdfExample.cpp -L../libharu/src -I. -lz -lm ../libharu/src/libhpdfs.a
