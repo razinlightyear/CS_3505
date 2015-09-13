@@ -9,6 +9,8 @@
 class HaruPDF {
 
 	// private data members
+	font
+	page
 private:
 	
 public:

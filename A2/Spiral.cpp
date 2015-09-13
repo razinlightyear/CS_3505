@@ -18,14 +18,17 @@ public:
 	
 	}
 
+	// prefix ++
 	Spiral& operator++(){
 		// Advances the next character
+		return *this;
 	}
-/*
-	Spiral operator++(double next){
+
+	// postfix ++
+	void operator++(int){
 		// Advances the next character
+		// int is a dummy param. Postfix is usually implemented by using prefix.
 	}
-*/
 	
 	double get_x(){
 		return x;
@@ -35,7 +38,7 @@ public:
 		return y;
 	}
 	
-	// return degrees 
+	// return degrees. not needed?
 	double get_spiral_angle(){
 		return startAngle;
 	}
