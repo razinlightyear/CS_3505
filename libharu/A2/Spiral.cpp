@@ -18,6 +18,8 @@ public:
 	
 	}
 
+	// internally advances the spiral to its next position. 
+	// The next position should be suitable for the next character of the text to be placed. 
 	// prefix ++
 	Spiral& operator++(){
 		// Advances the next character
