@@ -1,41 +1,19 @@
-
-// assume that there is one argument but handle zero.
-int main (int argc, char *argv[])
-{
-	if(argc <= 1)
-	{
-		cout << "ERROR: You must give text via command line to create a PDF." << endl;
-		return EXIT_FAILURE;
-	}
-	
-	
-	
-	
-}
 /*
- * << Alternative PDF Library 1.0.0 >> -- text_demo2.c
- *
- * Copyright (c) 1999-2006 Takeshi Kanno <takeshi_kanno@est.hi-ho.ne.jp>
- *
- * Permission to use, copy, modify, distribute and sell this software
- * and its documentation for any purpose is hereby granted without fee,
- * provided that the above copyright notice appear in all copies and
- * that both that copyright notice and this permission notice appear
- * in supporting documentation.
- * It is provided "as is" without express or implied warranty.
- *
- */
+*  Andrew Emrazian CS3505 - SpiralPDF implementation
+*/
 #define _USE_MATH_DEFINES
 #include <cmath>
 #include <iostream>
 using namespace std;
 
+#include "HaruPDF.h"
+#include "Spiral.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
 #include <setjmp.h>
-#include "../include/hpdf.h"
+//#include "../include/hpdf.h"
 
 jmp_buf env;
 
@@ -52,44 +30,24 @@ error_handler  (HPDF_STATUS   error_no,
                 (HPDF_UINT)detail_no);
     longjmp(env, 1);
 }
-/*
-int no = 0;
 
-void
-PrintText(HPDF_Page page)
+int main (int argc, char *argv[])
 {
-    char buf[512];
-    HPDF_Point pos = HPDF_Page_GetCurrentTextPos (page);
-
-    no++;
-    #ifdef __WIN32__
-    _snprintf (buf, 512, ".[%d]%0.2f %0.2f", no, pos.x, pos.y);
-    #else
-    snprintf (buf, 512, ".[%d]%0.2f %0.2f", no, pos.x, pos.y);
-    #endif
-    HPDF_Page_ShowText(page, buf);
-}
-*/
-
-int
-main (int argc, char **argv)
-{
+	if(argc <= 1)
+	{
+		cout << "ERROR: You must give text via command line to create a PDF." << endl;
+		return EXIT_FAILURE;
+	}
+	
     HPDF_Doc  pdf;
-    HPDF_Page page;
-    char fname[256];
-    HPDF_Font font;
+
     float angle1;
     float angle2;
     float rad1;
     float rad2;
-    HPDF_REAL page_height;
-    HPDF_Rect rect;
-    int i;
 
-    const char* SAMP_TXT = "The quick brown fox jumps over the lazy dog. We need more text to test a spiral. Maybe the radians needs to increase with smaller radius."; 
+	 //const char* SAMP_TXT = "I pledge allegiance to the Flag of the United States of America, and to the Republic for which it stands, one Nation under God, indivisible, with liberty and justice for all.";
 
-    strcpy (fname, argv[0]);
-    strcat (fname, ".pdf");
 
     pdf = HPDF_New (error_handler, NULL);
     if (!pdf) {
@@ -102,64 +60,75 @@ main (int argc, char **argv)
         return 1;
     }
 
+	HaruPDF haru = HaruPDF(pdf, HPDF_AddPage (pdf), HPDF_GetFont (pdf, "Helvetica", NULL)); 
+	char f[strlen(argv[0])+2];
+	for(int j = 2; j < strlen(argv[0]); j++)
+	{
+		f[j-2] = argv[0][j];
+	}
+	char ext[] = ".pdf";
+	for(int j = 0; j < strlen(ext); j++)
+	{
+		f[strlen(argv[0])-2+j] = ext[j];
+	}
+	
+	haru.set_fname(f);
+
     /* add a new page object. */
-    page = HPDF_AddPage (pdf);
-    HPDF_Page_SetSize (page, HPDF_PAGE_SIZE_A5, HPDF_PAGE_PORTRAIT);
+    haru.HPDF_Page_SetSize(HPDF_PAGE_SIZE_A5, HPDF_PAGE_PORTRAIT);
 
-//    print_grid  (pdf, page);
-
-    page_height = HPDF_Page_GetHeight (page);
-
-    font = HPDF_GetFont (pdf, "Helvetica", NULL);
-    HPDF_Page_SetTextLeading (page, 20);
+    haru.HPDF_Page_SetTextLeading(20);
 
     /* text along a circle */
-    HPDF_Page_SetGrayStroke (page, 0);
+    haru.HPDF_Page_SetGrayStroke(0);
 
     angle2 = 180;
 
-    HPDF_Page_BeginText (page);
-    font = HPDF_GetFont (pdf, "Courier-Bold", NULL);
-    HPDF_Page_SetFontAndSize (page, font, 25);
-	cout << strlen(SAMP_TXT) << endl;
-    float x = 210 + cos(rad2) * 70;
-    float y = 300 + sin(rad2) * 70;
-    for (i = 0; i < strlen (SAMP_TXT); i++) {
-        char buf[2];
-   //     float x;
-   //     float y;
-		//DEJ: rad1 determines the angle of the letter. rad2 is how far
-		// around the circle you are. 
-        rad1 = (angle2 - 90) / 180 * 3.141592;
-        rad2 = angle2 / 180 * 3.141592;
-		//cout << rad1 << endl;
-		cout << "radians " << rad2 << endl;
-
-        x = 210 + cos(rad2) * 10 * i; // (sqrt(x*x + y*y)
-        y = 300 + sin(rad2) * 10 * i; //(sqrt(x*x + y*y)
-
-		cout << "x " << x << endl;		
-		cout << "y " << y << endl;
-		cout << "" << endl;								
-        HPDF_Page_SetTextMatrix(page, cos(rad1), sin(rad1), -sin(rad1), cos(rad1), x, y);
-		// HPDF_Status HPDF_Page_SetTextMatrix(HPDF_Page page, HPDF_REAL a, HPDF_REAL b, HPDF_REAL c, HPDF_REAL d, HPDF_REAL x, HPDF_REAL y)
-
+    haru.HPDF_Page_BeginText();
+    haru.set_font("Courier-Bold", NULL);
+    haru.HPDF_Page_SetFontAndSize(25);
+/*	
+	Spiral spiral = Spiral(210, 300, 30 ,30);
+	for( int i = 0; strlen(SAMP_TXT); i++)
+	{
+		char buf[2];
+		haru.HPDF_Page_SetTextMatrix(spiral.get_letter_angle_x(), spiral.get_letter_angle_y(), -spiral.get_letter_angle_y(), spiral.get_letter_angle_x(), spiral.get_x(), spiral.get_y());
+		spiral++;
         buf[0] = SAMP_TXT[i];
         buf[1] = 0;
-        HPDF_Page_ShowText (page, buf);
+        haru.HPDF_Page_ShowText(buf);
+	}
+*/	
+    float x = 210 + cos(rad2) * 70;
+    float y = 300 + sin(rad2) * 70;
+    for (int i = 0; i < strlen(argv[1]); i++) {//strlen (SAMP_TXT)
+        char buf[2];
+
+        rad1 = (angle2 - 90) / 180 * 3.141592;
+        rad2 = angle2 / 180 * 3.141592;
+
+        x = 210 + cos(rad2) * 8 * i;
+        y = 300 + sin(rad2) * 8 * i; 
+						
+        haru.HPDF_Page_SetTextMatrix(cos(rad1), sin(rad1), -sin(rad1), cos(rad1), x, y); 
+
+        buf[0] = argv[1][i];
+        buf[1] = 0;
+        haru.HPDF_Page_ShowText(buf);
         angle2 -= 10.0; // Change depending on the radius.
     }
-
-    HPDF_Page_EndText (page);
-
+	cout << "got past for loop" << endl;
+    haru.HPDF_Page_EndText();
+	cout << "past HPDF_Page_EndText" << endl;
     /* save the document to a file */
-    HPDF_SaveToFile (pdf, fname);
-
+    haru.HPDF_SaveToFile();
+	cout << "past HPDF_SaveToFile" << endl;
     /* clean up */
-    HPDF_Free (pdf);
-
+    haru.HPDF_Free();
+	cout << "past HPDF_Free" << endl;
     return 0;
+	
+	
 }
-
 
 

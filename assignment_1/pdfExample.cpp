@@ -22,6 +22,7 @@ using namespace std;
 #include <math.h>
 #include <setjmp.h>
 #include "../include/hpdf.h"
+#include <typeinfo>
 
 jmp_buf env;
 
@@ -69,7 +70,7 @@ main (int argc, char **argv)
     float rad1;
     float rad2;
     //HPDF_REAL page_height;
-    HPDF_Rect rect;
+    //HPDF_Rect rect;
     int i;
 
     const char* SAMP_TXT = "The quick brown fox jumps over the lazy dog. We need more text to test a spiral. Maybe the radians needs to increase with smaller radius."; 
@@ -90,19 +91,22 @@ main (int argc, char **argv)
 
     /* add a new page object. */
     page = HPDF_AddPage (pdf);
-    HPDF_Page_SetSize (page, HPDF_PAGE_SIZE_A5, HPDF_PAGE_PORTRAIT);
+    //HPDF_Page_SetSize (page, HPDF_PAGE_SIZE_A5, HPDF_PAGE_PORTRAIT);
 
 //    print_grid  (pdf, page);
 
     //page_height = HPDF_Page_GetHeight (page);
 
     font = HPDF_GetFont (pdf, "Helvetica", NULL);
-    HPDF_Page_SetTextLeading (page, 20);
+    //HPDF_Page_SetTextLeading (page, 20);
 
     /* text along a circle */
     HPDF_Page_SetGrayStroke (page, 0);
 
     angle2 = 180;
+
+	HPDF_Page_SetSize (page, HPDF_PAGE_SIZE_A5, HPDF_PAGE_PORTRAIT);
+	HPDF_Page_SetTextLeading (page, 20);
 
     HPDF_Page_BeginText (page);
     font = HPDF_GetFont (pdf, "Courier-Bold", NULL);
