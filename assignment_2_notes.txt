@@ -29,4 +29,4 @@ project folder 'A2'
 zip folder when done	
 
 compile ./A2/pdfExample.cpp:
-g++ -o pdfExample -O3 pdfExample.cpp -L../libharu/src -I. -lz -lm ../libharu/src/libhpdfs.a
+g++ -o pdfExample -O3 pdfExample.cpp -L../src -I. -lz -lm ../src/libhpdfs.a
