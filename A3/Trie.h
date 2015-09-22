@@ -11,7 +11,7 @@ class Trie
 
 private:
 	// private data members
-    Node root;
+    Node* root;
 	
 public:
 	// Initializer list, uses copy constructor

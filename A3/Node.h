@@ -1,10 +1,28 @@
+#include<vector>
+
 class Node 
 {
+private:	
 	//array of 26 nodes
-	Node* children[26];
+	std::vector<Node*> alphabet;
 	bool completeWord;
 public:	
 	Node();
+	
+	//Node(char c);
+	
+	bool isPresent(char c);
+	
+//	void setChar(char c);
+	
+	bool getCompleteWord();
+	
+	bool setCompleteWord(bool _completeWord);
+	
+	std::vector<Node*> getAlphabet();
+	
+	Node* setAlphabetIndex(int index);
+	//Node* getNode();
 };
 
 /*
