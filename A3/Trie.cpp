@@ -185,13 +185,14 @@
 		}
 		word = word.substr(0, charIndex);
 		std::cout << "Prefix: word " << word << std::endl;
-		for(int i=0; i<26; i++)
+		/*for(int i=0; i<26; i++)
 		{
 			if(current->getAlphabet()[i] != nullptr)
 			{
 				this->allWordsWithPrefixHelper(word, current->getAlphabet()[i], &wordList);
 			}
-		}
+		}*/
+				this->allWordsWithPrefixHelper(word, current, &wordList);
 		return wordList;
 	}
 	
@@ -202,14 +203,15 @@
 		{
 			if(current->getAlphabet()[i] != nullptr)
 			{
-				std::cout << "current"<< current << std::endl;
-				word += (char)(i + 97); 
+				//std::cout << "current"<< current << std::endl;
+				word.push_back((char)(i + 97)); 
 				std::cout << " word << " << word << std::endl;
 				if(current->getAlphabet()[i]->isCompleteWord())
 				{
 					wordList->push_back(word);
 				}
 				this->allWordsWithPrefixHelper(word, current->getAlphabet()[i], wordList);
+				word.pop_back(); 
 			}
 		}
 	}
