@@ -37,6 +37,8 @@ public:
 
 
 private:
+	
+		void allWordsWithPrefixHelper(std::string word, Node* current, std::vector<std::string>* wordList);
 	void addWordHelper(std::string word);
 	
 	bool isWordHelper(std::string word);

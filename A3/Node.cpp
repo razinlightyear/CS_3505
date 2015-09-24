@@ -1,34 +1,35 @@
 #include "Node.h"
 #include <vector>
+#include <cstddef>
 	
 	Node::Node()
 	{
-		alphabet = std::vector<Node*>(26);
+		alphabet = std::vector<Node*>(26, nullptr);
 		completeWord = false;
 	}
 	
-	bool Node::isPresent(char c)
+	/*bool Node::isPresent(char c)
 	{
 		if(alphabet[(int)c - 97])
 		{
 			return true;
 		}
 		return false;
-	}
+	}*/
 /*	
 	void Node::setChar(char c)
 	{
 		alphabet[(int)c - 97] = true;
 	}
 */	
-	bool Node::getCompleteWord()
+	bool Node::isCompleteWord()
 	{
 		return completeWord;
 	}
 	
-	bool Node::setCompleteWord(bool _completeWord)
+	bool Node::isCompleteWord(bool _isCompleteWord)
 	{
-		completeWord = _completeWord;
+		completeWord = _isCompleteWord;
 	}
 	
 	std::vector<Node*> Node::getAlphabet()

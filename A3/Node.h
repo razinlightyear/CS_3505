@@ -11,13 +11,13 @@ public:
 	
 	//Node(char c);
 	
-	bool isPresent(char c);
+	//bool isPresent(char c);
 	
 //	void setChar(char c);
 	
-	bool getCompleteWord();
+	bool isCompleteWord();
 	
-	bool setCompleteWord(bool _completeWord);
+	bool isCompleteWord(bool _isCompleteWord);
 	
 	std::vector<Node*> getAlphabet();
 	

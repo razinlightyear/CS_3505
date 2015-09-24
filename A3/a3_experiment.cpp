@@ -3,6 +3,8 @@
 #include <vector>
 #include <stddef.h>
 
+#include <cstddef>
+
 int main()
 {
 	std::string str = "Cora";
@@ -28,7 +30,15 @@ int main()
 		index = 3;
 		std::cout << index << std::endl;		
 	}
-	
+	std::vector<std::string> wordList;
+	wordList.push_back(str);
+	for(int z =0; z<wordList.size(); z++)
+	{
+		std::cout << wordList[z] << std::endl;
+	}
+	str += '!';
+	str += (char)97;
+	std::cout << str << std::endl;
 	//std::cout << str[index] << std::endl;
 	
 	/*
