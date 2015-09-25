@@ -30,6 +30,7 @@
 	bool Node::isCompleteWord(bool _isCompleteWord)
 	{
 		completeWord = _isCompleteWord;
+		return completeWord;
 	}
 	
 	std::vector<Node*> Node::getAlphabet()

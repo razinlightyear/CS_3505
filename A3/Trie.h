@@ -1,8 +1,10 @@
 /*
-* Andrew Emrazian CS3505 -  prototyping
+* Andrew Emrazian CS3505 
 *
+* This class represents a tree that is designed to store words
+* so that they can be accessed very fast. It uses Nodes to store 
+* data and reference to the letters to each other.
 */
-// include gaurds?
 #include "Node.h"
 #include <string>
 #include <vector>
@@ -14,8 +16,6 @@ private:
     Node* root;
 	
 public:
-	// Initializer list, uses copy constructor
-	//Point(int x, int y) : x(x), y(y) { }
 	Trie();
 	
 	// Copy constructor
@@ -32,15 +32,12 @@ public:
 	
 	// find count of words in the trie which has the given word as prefix.
 	std::vector<std::string> allWordsWithPrefix(std::string word);
-	
-
-
 
 private:
 	
-		void allWordsWithPrefixHelper(std::string word, Node* current, std::vector<std::string>* wordList);
-	void addWordHelper(std::string word);
+	void allWordsWithPrefixHelper(std::string word, Node* current, std::vector<std::string>* wordList);
+		
+	void destructorHelper(Node* newRoot);
 	
-	bool isWordHelper(std::string word);
-	
+	void constructorHelper(Node* otherNode, Node* newNode);
 };

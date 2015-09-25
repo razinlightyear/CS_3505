@@ -1,3 +1,11 @@
+/*
+* Andrew Emrazian CS3505 
+*
+* This class represents a letter to be represented in a Trie.
+* It points to a potentional Node for each subsequent letter in
+* the alphabet. It also stores whether this character completes a 
+* word.
+*/
 #include<vector>
 
 class Node 
@@ -9,27 +17,13 @@ private:
 public:	
 	Node();
 	
-	//Node(char c);
-	
-	//bool isPresent(char c);
-	
-//	void setChar(char c);
-	
 	bool isCompleteWord();
 	
 	bool isCompleteWord(bool _isCompleteWord);
 	
 	std::vector<Node*> getAlphabet();
 	
+	// Sets the current Nodes' reference to 
+	//a child Node and returns the child.
 	Node* setAlphabetIndex(int index);
-	//Node* getNode();
 };
-
-/*
-struct node
-{
-	bool is_end;
-	int prefix_count;
-	struct node* child[ALPHABET_SIZE];
-}*head;
-*/

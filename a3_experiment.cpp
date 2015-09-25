@@ -5,6 +5,10 @@
 
 #include <cstddef>
 
+double doubleIt( double value ) {
+    return value * 2.0;
+}
+
 int main()
 {
 	std::string str = "Cora";
@@ -24,12 +28,6 @@ int main()
 		}
 		std::cout << std::endl;
 			//std::cout << v << std::endl;
-	int index;
-	if(!index)
-	{
-		index = 3;
-		std::cout << index << std::endl;		
-	}
 	std::vector<std::string> wordList;
 	wordList.push_back(str);
 	for(int z =0; z<wordList.size(); z++)
@@ -46,4 +44,28 @@ int main()
 						… }
 	val = A(&mLocal);
 	*/
+	
+	
+	
+    std::vector<int> values(3);
+      values[0] = 5;
+      values.push_back(10); 
+      // here!
+  	for(int z =0; z<values.size(); z++)
+  	{
+  		std::cout << values[z] << std::endl;
+  	}
+	double inputNumber = 1.0;
+	    for (int counter = 0; counter < 10; counter++)
+	    {
+	        double result = doubleIt( inputNumber );
+	        std::cout << inputNumber << " doubles to " << result << std::endl;
+	        inputNumber += 0.5;
+	    }
+	int a = 10;
+	int b = 30;
+	std::swap(a, b);
+	std::cout << "a " << a << " b " << b << std::endl;
+		
+      return 0;
 }
