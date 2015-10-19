@@ -174,6 +174,7 @@ DIST          = ../../../../Qt/5.5/clang_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/5.5/clang_64/mkspecs/features/qt_config.prf \
 		../../../../Qt/5.5/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../../../Qt/5.5/clang_64/mkspecs/features/spec_post.prf \
+		../StopWatch/.qmake.stash \
 		../../../../Qt/5.5/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt/5.5/clang_64/mkspecs/features/default_pre.prf \
 		../../../../Qt/5.5/clang_64/mkspecs/features/mac/default_pre.prf \
@@ -358,6 +359,7 @@ Makefile: ../StopWatch/StopWatch.pro ../../../../Qt/5.5/clang_64/mkspecs/macx-cl
 		../../../../Qt/5.5/clang_64/mkspecs/features/qt_config.prf \
 		../../../../Qt/5.5/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../../../Qt/5.5/clang_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../../Qt/5.5/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt/5.5/clang_64/mkspecs/features/default_pre.prf \
 		../../../../Qt/5.5/clang_64/mkspecs/features/mac/default_pre.prf \
@@ -504,6 +506,7 @@ Makefile: ../StopWatch/StopWatch.pro ../../../../Qt/5.5/clang_64/mkspecs/macx-cl
 ../../../../Qt/5.5/clang_64/mkspecs/features/qt_config.prf:
 ../../../../Qt/5.5/clang_64/mkspecs/macx-clang/qmake.conf:
 ../../../../Qt/5.5/clang_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../../Qt/5.5/clang_64/mkspecs/features/exclusive_builds.prf:
 ../../../../Qt/5.5/clang_64/mkspecs/features/default_pre.prf:
 ../../../../Qt/5.5/clang_64/mkspecs/features/mac/default_pre.prf:
@@ -590,6 +593,10 @@ compiler_moc_header_clean:
 	-$(DEL_FILE) moc_mainwindow.cpp
 moc_mainwindow.cpp: ../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/QTimer \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qtimer.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/QTime \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qdatetime.h \
 		../StopWatch/mainwindow.h
 	/Users/Emrazian/Qt/5.5/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -I/Users/Emrazian/Qt/5.5/clang_64/mkspecs/macx-clang -I'/Users/Emrazian/Documents/CS 3505/A5/StopWatch' -I/Users/Emrazian/Qt/5.5/clang_64/lib/QtWidgets.framework/Headers -I/Users/Emrazian/Qt/5.5/clang_64/lib/QtGui.framework/Headers -I/Users/Emrazian/Qt/5.5/clang_64/lib/QtCore.framework/Headers -I. -F/Users/Emrazian/Qt/5.5/clang_64/lib ../StopWatch/mainwindow.h -o moc_mainwindow.cpp
 
@@ -616,6 +623,10 @@ compiler_clean: compiler_moc_header_clean compiler_uic_clean
 main.o: ../StopWatch/main.cpp ../StopWatch/mainwindow.h \
 		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/QTimer \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qtimer.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/QTime \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qdatetime.h \
 		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QApplication \
 		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../StopWatch/main.cpp
@@ -623,7 +634,12 @@ main.o: ../StopWatch/main.cpp ../StopWatch/mainwindow.h \
 mainwindow.o: ../StopWatch/mainwindow.cpp ../StopWatch/mainwindow.h \
 		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
-		ui_mainwindow.h
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/QTimer \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qtimer.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/QTime \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qdatetime.h \
+		ui_mainwindow.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/QDateTime
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../StopWatch/mainwindow.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 

@@ -1,3 +1,4 @@
+// Andrew Emrazian -- October 18 2015
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
@@ -16,8 +17,9 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+
 private slots:
-    void showTime(); //QTime* st   ?
+    void showTime();             // Update the lcd number text
     void on_startStop_clicked();
 
 private:
