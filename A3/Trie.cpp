@@ -32,6 +32,10 @@
 				//std::cout << "Copying " << (char)(i + 97) << " to newNode " << newNode << std::endl;
 				this->constructorHelper(otherNode->getAlphabet()[i], newNode->getAlphabet()[i]);
 			}
+			else
+			{
+				newNode->isCompleteWord(otherNode->isCompleteWord());
+			}
 		}
 
 	}

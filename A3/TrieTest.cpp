@@ -64,7 +64,7 @@ int main(int argc, char *argv[])
 			}
 		}
 	}	
-/*	
+	/*
 	std::string s = "dog";
 	std::string s2 = "dog";
 	std::string s3 = "cat";

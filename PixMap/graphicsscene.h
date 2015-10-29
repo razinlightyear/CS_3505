@@ -1,0 +1,5 @@
+#ifndef GRAPHICSSCENE_H
+#define GRAPHICSSCENE_H
+
+#endif // GRAPHICSSCENE_H
+
