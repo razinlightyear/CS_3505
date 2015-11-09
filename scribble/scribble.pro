@@ -4,17 +4,15 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT += widgets
+qtHaveModule(printsupport): QT += printsupport
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+HEADERS       = mainwindow.h \
+                scribblearea.h
+SOURCES       = main.cpp \
+                mainwindow.cpp \
+                scribblearea.cpp
 
-TARGET = scribble
-TEMPLATE = app
-
-
-SOURCES += main.cpp\
-        mainwindow.cpp
-
-HEADERS  += mainwindow.h
-
-FORMS    += mainwindow.ui
+# install
+target.path = $$[QT_INSTALL_EXAMPLES]/widgets/widgets/scribble
+INSTALLS += target
